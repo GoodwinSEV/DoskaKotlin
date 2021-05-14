@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1092649224780",
+    "project_id": "doskakotlin-929f2",
+    "storage_bucket": "doskakotlin-929f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092649224780:android:e0ea524a49abf1fd5402e9",
+        "android_client_info": {
+          "package_name": "com.example.doskakotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092649224780-m7563klhaeh9hg5bv7d3c5kkibj8ecb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYGBhAaXGTWQUTGgVTXvVlg2D9l9nLMW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092649224780-m7563klhaeh9hg5bv7d3c5kkibj8ecb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
