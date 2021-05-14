@@ -9,12 +9,15 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import com.example.doskakotlin.databinding.ActivityMainBinding
+import com.example.doskakotlin.dialoghelper.DialogConst
+import com.example.doskakotlin.dialoghelper.DialogHelper
 import com.google.android.material.navigation.NavigationView
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var rootElement: ActivityMainBinding
+    private val dialogHelper = DialogHelper(this)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,10 +55,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this, "Pressed id_dm", Toast.LENGTH_LONG).show()
             }
             R.id.id_sign_up -> {
-                Toast.makeText(this, "Pressed id_sign_up", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "Pressed id_sign_up", Toast.LENGTH_LONG).show()
+                dialogHelper.createSignDialog(DialogConst.SIGN_UP_STATE)
             }
             R.id.id_sign_in -> {
-                Toast.makeText(this, "Pressed id_sign_in", Toast.LENGTH_LONG).show()
+               // Toast.makeText(this, "Pressed id_sign_in", Toast.LENGTH_LONG).show()
+                dialogHelper.createSignDialog(DialogConst.SIGN_IN_STATE)
             }
             R.id.id_sign_out -> {
                 Toast.makeText(this, "Pressed id_sign_out", Toast.LENGTH_LONG).show()
