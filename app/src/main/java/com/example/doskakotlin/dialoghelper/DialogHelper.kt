@@ -1,31 +1,77 @@
 package com.example.doskakotlin.dialoghelper
 
 import android.app.AlertDialog
+import android.view.View
+import android.widget.Toast
 import com.example.doskakotlin.MainActivity
 import com.example.doskakotlin.R
+import com.example.doskakotlin.accounthelper.AccountHelper
 import com.example.doskakotlin.databinding.SignDialogBinding
 
 class DialogHelper(act:MainActivity) {
-    private val act1 = act
+    private val act = act
+    private val accHelper = AccountHelper(act)
 
     fun createSignDialog(index:Int) {
-        val builder = AlertDialog.Builder(act1)
-        val rootDialogElement = SignDialogBinding.inflate(act1.layoutInflater)
-
+        val builder = AlertDialog.Builder(act)
+        val rootDialogElement = SignDialogBinding.inflate(act.layoutInflater)
         val view = rootDialogElement.root
-        if (index == DialogConst.SIGN_UP_STATE)
+        builder.setView(view)
+        setDialogState(index, rootDialogElement)
+
+        val dialog = builder.create()
+
+        rootDialogElement.btnSignUpIn.setOnClickListener {
+            setOnClickSignUpIn(index, rootDialogElement, dialog)
+        }
+
+        rootDialogElement.btnForgetPass.setOnClickListener {
+            setOnClickResetPassword(rootDialogElement, dialog)
+        }
+
+       dialog.show()
+    }
+
+    private fun setOnClickResetPassword(rootDialogElement: SignDialogBinding, dialog: AlertDialog?) {
+        if (rootDialogElement.edSignEmail.text.isNotEmpty()) {
+            act.mAuth.sendPasswordResetEmail(rootDialogElement.edSignEmail.text.toString()).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(act, R.string.email_reset_password_was_sent, Toast.LENGTH_LONG).show()
+                }
+            }
+            dialog?.dismiss()
+            }
+        else
         {
-            rootDialogElement.tvSignTitle.text = act1.resources.getString(R.string.ad_sign_up)
-            rootDialogElement.btnSignUpIn.text = act1.resources.getString(R.string.sign_up_action)
+            rootDialogElement.tvDialogMessage.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setOnClickSignUpIn(index: Int, rootDialogElement: SignDialogBinding, dialog: AlertDialog?) {
+        dialog?.dismiss()
+        if (index == DialogConst.SIGN_UP_STATE) {
+            accHelper.signUpWithEmail(rootDialogElement.edSignEmail.text.toString(), rootDialogElement.edPassword.text.toString())
         }
         else
         {
-            rootDialogElement.tvSignTitle.text = act1.resources.getString(R.string.ad_sign_in)
-            rootDialogElement.btnSignUpIn.text = act1.resources.getString(R.string.sign_in_action)
+            accHelper.signInWithEmail(rootDialogElement.edSignEmail.text.toString(), rootDialogElement.edPassword.text.toString())
+        }
+    }
+
+    private fun setDialogState(index: Int, rootDialogElement: SignDialogBinding) {
+        if (index == DialogConst.SIGN_UP_STATE)
+        {
+            //Регистрация
+            rootDialogElement.tvSignTitle.text = act.resources.getString(R.string.ad_sign_up)
+            rootDialogElement.btnSignUpIn.text = act.resources.getString(R.string.sign_up_action)
+        }
+        else
+        {
+            //Вход зарегист аккаунта
+            rootDialogElement.tvSignTitle.text = act.resources.getString(R.string.ad_sign_in)
+            rootDialogElement.btnSignUpIn.text = act.resources.getString(R.string.sign_in_action)
+            rootDialogElement.btnForgetPass.visibility = View.VISIBLE
 
         }
-        builder.setView(view)
-        builder.show()
-
     }
 }

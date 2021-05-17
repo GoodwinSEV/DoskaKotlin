@@ -13,11 +13,20 @@
     <string name="ad_sign_out">Выход</string>
     <string name="open">Вход</string>
     <string name="close">Выход</string>
+    <string name="not_reg">Войдите или зарегистрируйтесь</string>
     <!-- Sign Dialog -->
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="sign_up_action">Зарегистрироваться</string>
     <string name="sign_in_action">Войти</string>
     <string name="forget_password">Забыли пароль?</string>
+    <string name="sign_up_error">Не удалось зарегистрироваться!</string>
+    <string name="sign_in_error">Не удалось войти!</string>
+    <string name="send_verification_error">Не удалось отправить email  для подтверждения!</string>
+    <string name="send_verification_done">На вашу почту была отправлена ссылка для подверждения вашего аккаунта,
+        пожалуйста подтвердите ваш аккаунт!</string>
+    <string name="email_reset_password_was_sent">Reset email was sent</string>
+    <string name="dialog_reset_email_message">Для восстановления пароля укажите ваш почтовый адрес</string>
+
 
 </resources>
