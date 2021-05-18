@@ -10,7 +10,7 @@ import com.example.doskakotlin.databinding.SignDialogBinding
 
 class DialogHelper(act:MainActivity) {
     private val act = act
-    private val accHelper = AccountHelper(act)
+    val accHelper = AccountHelper(act)
 
     fun createSignDialog(index:Int) {
         val builder = AlertDialog.Builder(act)
@@ -27,6 +27,10 @@ class DialogHelper(act:MainActivity) {
 
         rootDialogElement.btnForgetPass.setOnClickListener {
             setOnClickResetPassword(rootDialogElement, dialog)
+        }
+
+        rootDialogElement.btnGoogleSignIn.setOnClickListener {
+            accHelper.signInWithGoogle()
         }
 
        dialog.show()

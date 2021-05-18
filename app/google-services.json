@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1092649224780-16st7np0or64f2c2q03a9uc97u1lr067.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doskakotlin",
+            "certificate_hash": "f3471459ce1c8b0ee7c58df81fb8e63b5e055e05"
+          }
+        },
+        {
           "client_id": "1092649224780-m7563klhaeh9hg5bv7d3c5kkibj8ecb4.apps.googleusercontent.com",
           "client_type": 3
         }
